@@ -16,14 +16,16 @@ class FelhasznaloiBevitel:
 
     @staticmethod
     def bekerSzamot(felirat: str) -> str:
+        """Egyetlen érvényes egész szám bekérése a felhasználótól."""
         while True:
-            szam = input(felirat)
+            szam = input(felirat).strip()
             if SztringSzamolo.ervenyesEgeszSzam(szam):
                 return szam
-            else:
-                print("Érvénytelen szám. Kérlek adj meg egy egész számot (pl. -10 vagy 23).")
+            print("Érvénytelen szám. Kérlek adj meg egy egész számot (pl. -10 vagy 23).")
 
-    def bekerKetSzamot(self) -> tuple[str, str]:
-        szam1 = self.bekerSzamot("Kérem az első számot: ")
-        szam2 = self.bekerSzamot("Kérem a második számot: ")
+    @staticmethod
+    def bekerKetSzamot() -> tuple[str, str]:
+        """Két érvényes egész szám bekérése a felhasználótól."""
+        szam1 = FelhasznaloiBevitel.bekerSzamot("Kérem az első számot: ")
+        szam2 = FelhasznaloiBevitel.bekerSzamot("Kérem a második számot: ")
         return szam1, szam2
